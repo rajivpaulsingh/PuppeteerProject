@@ -2,17 +2,26 @@ const puppeteer = require('puppeteer')
 const expect = require('chai').expect
 
 describe('My Second Puppetter Test', () => {
-    it('should interact with elements in the browser', async function() {
-        const browser = await puppeteer.launch({ 
+
+    let browser
+    let page
+
+    before(async function() {
+        browser = await puppeteer.launch({
             headless: false, 
             slowMo: 10,
             devtools: false,
         })
-        const page = await browser.newPage()
-
-        //Set default timeouts
+        page = await browser.newPage()
         await page.setDefaultTimeout(10000)
         await page.setDefaultNavigationTimeout(20000)
+    })
+
+    after(async function() {
+        await browser.close()
+    })
+
+    it('should interact with elements in the browser', async function() {
 
         await page.goto('https://example.com/')
         await page.waitForXPath('//h1') //wait for xpath 
@@ -51,7 +60,6 @@ describe('My Second Puppetter Test', () => {
         //Element not exist
         await page.waitFor(() => !document.querySelector('signin_button')) //1st way
         await page.waitForSelector('#signin_button', { hidden: true, timeout: 3000 }) //2nd way
-        await browser.close()
 
     })
 })

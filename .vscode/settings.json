@@ -1,9 +1,11 @@
 {
     "git.ignoreLimitWarning": true,
     "cSpell.words": [
+        "button",
         "devtools",
         "puppetter",
         "rajiv",
-        "require"
+        "require",
+        "signin"
     ]
 }
