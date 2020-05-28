@@ -42,8 +42,15 @@ describe('My Second Puppetter Test', () => {
 
         //Keyboard press simulation
         await page.keyboard.press('Enter', { delay: 5 })
-        await page.waitFor(5000)
+        await page.waitFor(2000)
 
+        await page.goto('http://zero.webappsecurity.com/index.html')
+        await page.waitForSelector('#signin_button')
+        await page.click('#signin_button')
+
+        //Element not exist
+        await page.waitFor(() => !document.querySelector('signin_button')) //1st way
+        await page.waitForSelector('#signin_button', { hidden: true, timeout: 3000 }) //2nd way
         await browser.close()
 
     })
