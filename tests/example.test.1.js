@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer')
+const expect = require('chai').expect
 
 describe('My First Puppetter Test', () => {
     it('should launch the browser', async function() {
@@ -23,6 +24,12 @@ describe('My First Puppetter Test', () => {
         //Get element count
         const count = await page.$$eval('p', element => element.length) //note the 2 $ signs
         console.log('Number of p tags in the page is: ' + count)
+
+        //Assertions
+        expect(title).to.be.a('string', 'Example Domain')
+        expect(url).to.include('example.com')
+        expect(text).to.be.a('string', 'Example Domain')
+        expect(count).to.equal(2)
 
         await browser.close()
 
