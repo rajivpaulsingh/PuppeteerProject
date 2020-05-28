@@ -34,6 +34,12 @@ describe('My First Puppetter Test', () => {
         //Text area
         const message = 'Lets fill that message with some sentence'
         await page.type('#comments', message)
+
+        //CLick button
+        await page.click('#submit-button')
+
+        //Wait for element
+        await page.waitForSelector('.result-content')
         await browser.close()
 
     })
