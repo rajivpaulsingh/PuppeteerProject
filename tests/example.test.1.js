@@ -1,8 +1,8 @@
 const puppeteer = require('puppeteer')
 const expect = require('chai').expect
 
-describe('My First Puppetter Test', () => {
-    it('should launch the browser', async function() {
+describe('My Second Puppetter Test', () => {
+    it('should interact with elements in the browser', async function() {
         const browser = await puppeteer.launch({ 
             headless: false, 
             slowMo: 10,
@@ -34,6 +34,14 @@ describe('My First Puppetter Test', () => {
         expect(url).to.include('example.com')
         expect(text).to.be.a('string', 'Example Domain')
         expect(count).to.equal(2)
+
+        await page.goto('http://zero.webappsecurity.com/index.html')
+        await page.waitForSelector('#searchTerm') //its a good practice to wait for element before performing actions on it
+        await page.type('#searchTerm', 'Hello World')
+
+        //Keyboard press simulation
+        await page.keyboard.press('Enter', { delay: 5 })
+        await page.waitFor(5000)
 
         await browser.close()
 
