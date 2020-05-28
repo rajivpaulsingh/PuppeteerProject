@@ -21,6 +21,14 @@ describe('My Second Puppetter Test', () => {
         await browser.close()
     })
 
+    beforeEach(async function() {
+        //Runs before each test step
+    })
+
+    afterEach(async function() {
+        //Runs after each test steps
+    })
+
     it('should interact with elements in the browser', async function() {
 
         await page.goto('https://example.com/')
