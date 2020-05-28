@@ -1,6 +1,8 @@
 {
     "git.ignoreLimitWarning": true,
     "cSpell.words": [
-        "puppetter"
+        "devtools",
+        "puppetter",
+        "require"
     ]
 }
