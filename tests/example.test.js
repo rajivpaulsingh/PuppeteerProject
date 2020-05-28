@@ -22,7 +22,7 @@ describe('My First Puppetter Test', () => {
 
         await page.goto('https://devexpress.github.io/testcafe/example/')
 
-        //Input fields
+        //Text field
         await page.type('#developer-name', 'Rajiv', { delay: 200 }) //Added delay to type is slowly ~ 200 milliseconds
 
         //Checkbox
@@ -30,6 +30,10 @@ describe('My First Puppetter Test', () => {
 
         //Drop-down
         await page.select('#preferred-interface', 'JavaScript API')
+
+        //Text area
+        const message = 'Lets fill that message with some sentence'
+        await page.type('#comments', message)
         await browser.close()
 
     })
