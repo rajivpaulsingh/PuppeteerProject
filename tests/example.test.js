@@ -21,7 +21,8 @@ describe('My First Puppetter Test', () => {
         // await browser.close()
 
         await page.goto('https://devexpress.github.io/testcafe/example/')
-        await page.type('#developer-name', 'Rajiv', { delay: 500 }) //Added delay to type is slowly ~ 500 miliseconds
+        await page.type('#developer-name', 'Rajiv', { delay: 200 }) //Added delay to type is slowly ~ 200 milliseconds
+        await page.click('#tried-test-cafe', { clickCount: 4 }) //the clickCount is how many times it can click
         await browser.close()
 
     })
