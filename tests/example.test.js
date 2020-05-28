@@ -11,6 +11,9 @@ describe('My First Puppetter Test', () => {
         await page.goto('https://example.com/')
         await page.waitFor(2000) //implicit wait
         await page.waitForSelector('h1')
+        await page.reload()
+        await page.waitFor(2000)
+        await page.waitForSelector('h1')
         await browser.close()
     })
 })
