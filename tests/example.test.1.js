@@ -20,6 +20,10 @@ describe('My First Puppetter Test', () => {
         const text = await page.$eval('h1', element => element.textContent)
         console.log('Text in the h1 tag: ' + text)
 
+        //Get element count
+        const count = await page.$$eval('p', element => element.length) //note the 2 $ signs
+        console.log('Number of p tags in the page is: ' + count)
+
         await browser.close()
 
     })
