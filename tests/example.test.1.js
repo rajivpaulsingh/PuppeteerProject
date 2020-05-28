@@ -10,6 +10,10 @@ describe('My First Puppetter Test', () => {
         })
         const page = await browser.newPage()
 
+        //Set default timeouts
+        await page.setDefaultTimeout(10000)
+        await page.setDefaultNavigationTimeout(20000)
+
         await page.goto('https://example.com/')
         const title = await page.title()
         const url = await page.url()
