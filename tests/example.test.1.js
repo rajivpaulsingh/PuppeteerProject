@@ -1,9 +1,7 @@
 const puppeteer = require('puppeteer')
 const expect = require('chai').expect
 
-const { click } = require('../lib/helpers')
-const { getText } = require('../lib/helpers')
-const { getCount } = require('../lib/helpers')
+const { click, getText, getCount, shouldNotExist } = require('../lib/helpers')
 
 describe('My Second Puppetter Test', () => {
 
@@ -73,8 +71,10 @@ describe('My Second Puppetter Test', () => {
         await click(page, '#signin_button') //Using the custom function
 
         //Element not exist
-        await page.waitFor(() => !document.querySelector('signin_button')) //1st way
-        await page.waitForSelector('#signin_button', { hidden: true, timeout: 3000 }) //2nd way
+        // await page.waitFor(() => !document.querySelector('signin_button')) //1st way
+        // await page.waitForSelector('#signin_button', { hidden: true, timeout: 3000 }) //2nd way
+        await page.waitFor(2000)
+        await shouldNotExist(page, '#signin_button')
 
     })
 })
