@@ -11,8 +11,9 @@ describe('Device Emulation', () => {
             slowMo: 10,
             devtools: false,
         })
-        const context = await browser.createIncognitoBrowserContext()
-        page = await context.newPage()
+        // const context = await browser.createIncognitoBrowserContext() //to launch the browser in incognito mode
+        // page = await context.newPage()
+        page = await browser.newPage()
         await page.setDefaultTimeout(10000)
         await page.setDefaultNavigationTimeout(20000)
     })
