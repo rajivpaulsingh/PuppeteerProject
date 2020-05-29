@@ -1,6 +1,10 @@
 const puppeteer = require('puppeteer')
 const expect = require('chai').expect
 
+const { click } = require('../lib/helpers')
+const { getText } = require('../lib/helpers')
+const { getCount } = require('../lib/helpers')
+
 describe('My Second Puppetter Test', () => {
 
     let browser
@@ -40,11 +44,13 @@ describe('My Second Puppetter Test', () => {
         console.log('URL: ' + url)
 
         //Extracting a text from an element
-        const text = await page.$eval('h1', element => element.textContent)
+        // const text = await page.$eval('h1', element => element.textContent)
+        const text = await getText(page, 'h1') //Using custom function
         console.log('Text in the h1 tag: ' + text)
 
         //Get element count
-        const count = await page.$$eval('p', element => element.length) //note the 2 $ signs
+        // const count = await page.$$eval('p', element => element.length) //note the 2 $ signs
+        const count = await getCount(page, 'p') //Using custom function
         console.log('Number of p tags in the page is: ' + count)
 
         //Assertions
@@ -62,8 +68,9 @@ describe('My Second Puppetter Test', () => {
         await page.waitFor(2000)
 
         await page.goto('http://zero.webappsecurity.com/index.html')
-        await page.waitForSelector('#signin_button')
-        await page.click('#signin_button')
+        // await page.waitForSelector('#signin_button')
+        // await page.click('#signin_button')
+        await click(page, '#signin_button') //Using the custom function
 
         //Element not exist
         await page.waitFor(() => !document.querySelector('signin_button')) //1st way
